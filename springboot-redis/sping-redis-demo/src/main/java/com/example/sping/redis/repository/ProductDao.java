@@ -1,0 +1,28 @@
+package com.example.sping.redis.repository;
+
+import com.example.sping.redis.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public class ProductDao {
+    @Autowired
+    private RedisTemplate template;
+    private final String HASH_KEY = "Product";
+
+    public Product save(Product product) {
+        template.opsForHash().put(HASH_KEY, product.getId(), product);
+        return product;
+    }
+
+    public List<Product> getProducts() {
+        return (List<Product>) template.opsForHash().values(HASH_KEY);
+    }
+
+    public Product findProductById(int id) {
+        return (Product) template.opsForHash().get(HASH_KEY, id);
+    }
+}
