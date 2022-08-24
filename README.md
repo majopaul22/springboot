@@ -9,3 +9,7 @@ Springboot Services
 # springboot Redis
   * https://www.youtube.com/watch?v=oRGqCz8OLcM
   * https://github.com/Java-Techie-jt/spring-data-redis/
+
+# springboot Redis pub-sub
+ * https://www.youtube.com/watch?v=WL6dgIODj9Y
+ * 
